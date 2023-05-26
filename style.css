@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+#wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex; 
+	justify-content: center; /* center horizontally */ 
+	align-items: center ; /* center vertically */ 
+    /* flex-direction: column; */
+} 
+#game{
+    border: 1px solid rgba(103, 103, 207, 0.753);
+    box-shadow: 12px 12px 2px 1px rgba(37, 193, 236, 0.396);
+}
