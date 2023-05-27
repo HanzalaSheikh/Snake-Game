@@ -8,7 +8,7 @@ const ctx  = canvas.getContext('2d');
 function drawGame() {
     clearScreen()
     drawSnake()
-
+    changeSnakePosition()
     let speed= 7; // interval will be seven times a second
     setTimeout(drawGame, 1000/speed); // screen will update 7 times a sec
 }
@@ -27,5 +27,74 @@ function drawSnake(){
     ctx.fillStyle = 'orange';
     ctx.fillRect(headX* tileCount,headY* tileCount,tileCount,tileSize);
 }
+
+let xvelocity = 0;
+let yvelocity = 0;
+
+    document.onkeydown = function() {
+        switch (window.event.keyCode) {
+            case 37:
+            xvelocity = -1;
+            yvelocity = 0;// execute a function by passing parameter 
+             break;
+            case 38:
+            xvelocity = 0;
+            yvelocity = -1;// execute a function by passing parameter 
+     
+             break;
+            case 39:
+                xvelocity = 1;
+                yvelocity = 0;// execute a function by passing parameter 
+     
+             break;
+            case 40:
+            yvelocity=0;
+            xvelocity=1;  
+            break;
+        }
+    };
+
+    function changeSnakePosition(){
+        headX = headX + xvelocity;
+        headY = headY + yvelocity;
+    }
+
+    // ?prevent snake from moving opposite direction 
+
+    function keyDown()
+//up
+{
+    if(keyCode==38){
+
+        if(yvelocity==1)
+        return; //prevent snake from moving in opposite direction
+        yvelocity=-1;
+        xvelocity=0;
+
+    }
+    //down
+    if(keyCode==40){
+        if(yvelocity==-1)
+        return;//prevent snake from moving in opposite direction
+        yvelocity=1;
+        xvelocity=0;
+    }
+
+//left
+    if(keyCode==37){
+        if(xvelocity==1)
+        return;//prevent snake from moving in opposite direction
+        yvelocity=0;
+        xvelocity=-1;
+    }
+    //right
+    if(keyCode==48){
+        if(xvelocity==-1)
+        return;//prevent snake from moving in opposite direcction
+        yvelocity=0;
+        xvelocity=1;
+    }
+}
+
 
 drawGame();
